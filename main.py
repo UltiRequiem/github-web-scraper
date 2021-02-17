@@ -8,7 +8,7 @@ page = website.content.decode('utf-8')
 
 if website.status_code == 404:
     print('User not found')
-    sys.exit(1)
+    exit()
 
 
 def extract_data(tab, tag, tag_end, inc):
