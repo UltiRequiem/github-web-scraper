@@ -7,11 +7,11 @@ website = requests.get('https://GitHub.com/' + username)
 page = website.content.decode('utf-8')
 
 if website.status_code == 404:
-    print('user not found')
+    print('User not found')
     sys.exit(1)
 
 
-def extract_data(tab, tag, endTag, inc):
+def extract_data(tab, tag, tag_end, inc):
     global website
     website = requests.get('https://github.com/' + username + '/?tab=' + tab)
     webpage = website.content.decode('utf-8')
@@ -21,7 +21,7 @@ def extract_data(tab, tag, endTag, inc):
         print('Vacuum.')
 
     while tag_index != -1:
-        end_index = webpage.find(endTag, tag_index + inc)
+        end_index = webpage.find(tag_end, tag_index + inc)
         print(' - ' + webpage[tag_index + inc: end_index])
         tag_index = webpage.find(tag, tag_index + 1)
 
