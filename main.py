@@ -12,7 +12,6 @@ if website.status_code == 404:
 
 
 def extract_data(tab, tag, tag_end, inc):
-    global website
     website = requests.get('https://github.com/' + username + '/?tab=' + tab)
     webpage = website.content.decode('utf-8')
 
