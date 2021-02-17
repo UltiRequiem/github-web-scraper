@@ -12,7 +12,7 @@ if website.status_code == 404:
     sys.exit(1)
 
 
-def extract_data(tag, tag_end, inc):
+def extract_data(tab, tag, tag_end, inc):  # Don't Delete tab
     tag_index = page.find(tag)
     if tag_index == -1:
         print("This user doesn't have any repository.")
@@ -30,3 +30,5 @@ if index_bio == 'h':
 elif page[index_bio + 5] != 'hidden':
     endBio = page.find('<', index_bio + 11)
     print(' - ' + page[index_bio + 12: endBio])
+
+extract_data('profile', 'Home location:', '"', 15)
