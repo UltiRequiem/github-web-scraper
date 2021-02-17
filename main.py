@@ -31,26 +31,26 @@ if page[index_bio + 5] != 'h':
     end_bio = page.find('<', index_bio + 11)
     print(' - ' + page[index_bio + 12: end_bio])
 
+if __name__ == '__main__':
+    extract_data('profile', 'Home location:', '"', 15)
 
-extract_data('profile', 'Home location:', '"', 15)
+    print('\nFollowers:')
 
-print('\nFollowers:')
+    tag = 'k" data-hovercard-type="user" data-hovercard-url="/users/'
+    extract_data("followers", tag, "/", 57)
 
-tag = 'k" data-hovercard-type="user" data-hovercard-url="/users/'
-extract_data("followers", tag, "/", 57)
+    print("\nFollowing:")
 
-print("\nFollowing:")
+    tag = 'k" data-hovercard-type="user" data-hovercard-url="/users/'
+    extract_data('following', tag, "/", 57)
 
-tag = 'k" data-hovercard-type="user" data-hovercard-url="/users/'
-extract_data('following', tag, "/", 57)
+    print('\nPrincipal Repos:')
 
-print('\nPrincipal Repos:')
+    tag = '<a href="/' + username + '/'
+    extract_data('repos', tag, '"', len(username) + 11)
 
-tag = '<a href="/' + username + '/'
-extract_data('repos', tag, '"', len(username) + 11)
+    print('\nLatest Starred or Pinned Repos:')
 
-print('\nLatest Starred or Pinned Repos:')
-
-tag = 'd-inline-block mb-1'
-extract_data('stars', tag, '"', 47)
+    tag = 'd-inline-block mb-1'
+    extract_data('stars', tag, '"', 47)
 
