@@ -1,5 +1,7 @@
 # GitHub Profile Web Scraper
 
+A simple web scraper that looks for data on the profile page of the user that you specify.
+
 ![Gif](https://thumbs.gfycat.com/PhysicalBabyishAmericanavocet-size_restricted.gif)
 
 ### Pre-requisites 📋
