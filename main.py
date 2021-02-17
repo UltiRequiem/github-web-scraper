@@ -38,3 +38,8 @@ print('\nFollowers:')
 
 tag = 'k" data-hovercard-type="user" data-hovercard-url="/users/'
 extract_data("followers", tag, "/", 57)
+
+print("\nFollowing:")
+
+tag = 'k" data-hovercard-type="user" data-hovercard-url="/users/'
+extract_data('following', tag, "/", 57)
