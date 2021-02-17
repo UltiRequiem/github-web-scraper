@@ -43,3 +43,14 @@ print("\nFollowing:")
 
 tag = 'k" data-hovercard-type="user" data-hovercard-url="/users/'
 extract_data('following', tag, "/", 57)
+
+print('\nPrincipal Repos:')
+
+tag = '<a href="/' + username + '/'
+extract_data('repos', tag, '"', len(username) + 11)
+
+print('\nLatest Starred or Pinned Repos:')
+
+tag = 'd-inline-block mb-1'
+extract_data('stars', tag, '"', 47)
+
