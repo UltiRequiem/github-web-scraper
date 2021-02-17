@@ -1,34 +1,40 @@
 import sys
 import requests
 
-username = str(input('GitHub Username: '))
+username = input('Username: ')
 
-website = requests.get('https://github.com/' + username)
-
+website = requests.get('https://GitHub.com/' + username)
 page = website.content.decode('utf-8')
 
 if website.status_code == 404:
-    print('User not found.')
+    print('user not found')
     sys.exit(1)
 
 
-def extract_data(tab, tag, tag_end, inc):  # Don't Delete tab
-    tag_index = page.find(tag)
+def extract_data(tab, tag, endTag, inc):
+    global website
+    website = requests.get('https://github.com/' + username + '/?tab=' + tab)
+    webpage = website.content.decode('utf-8')
+
+    tag_index = webpage.find(tag)
     if tag_index == -1:
-        print("This user doesn't have any repository.")
+        print('Vacuum.')
 
     while tag_index != -1:
-        end_index = page.find(tag_end, tag_index + inc)
-        print(' - ' + page[tag_index + inc: end_index])
-        tag_index = page.find(tag, tag_index + 1)
+        end_index = webpage.find(endTag, tag_index + inc)
+        print(' - ' + webpage[tag_index + inc: end_index])
+        tag_index = webpage.find(tag, tag_index + 1)
 
 
 index_bio = page.find('f4"')
-if index_bio == 'h':
-    print("This user doesn't have a bio.")  # TODO fix this
+if page[index_bio + 5] != 'h':
+    end_bio = page.find('<', index_bio + 11)
+    print(' - ' + page[index_bio + 12: end_bio])
 
-elif page[index_bio + 5] != 'hidden':
-    endBio = page.find('<', index_bio + 11)
-    print(' - ' + page[index_bio + 12: endBio])
 
 extract_data('profile', 'Home location:', '"', 15)
+
+print('\nFollowers:')
+
+tag = 'k" data-hovercard-type="user" data-hovercard-url="/users/'
+extract_data("followers", tag, "/", 57)
