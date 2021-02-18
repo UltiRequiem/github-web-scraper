@@ -22,7 +22,7 @@ Or...
 
 ### License 📄
 
-This proyect is under MIT License - see [LICENSE](./LICENSE) fore more information.
+This proyect is under MIT License - see [LICENSE](./LICENSE) for more information.
 
 
 *Fun Fact: This was done while I was listening to [this song](https://youtu.be/7lvDCMkjcsM).*
